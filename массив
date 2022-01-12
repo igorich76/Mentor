@@ -1,0 +1,7 @@
+##
+var a:= new integer[4](1, 2, 3, 4);
+var b:= new integer[3](12, 34, 56);
+a.Println;
+b.Println;
+a:=a+b;
+a.Println;
