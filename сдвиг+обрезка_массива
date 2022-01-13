@@ -1,0 +1,8 @@
+##
+var a:= new integer[4](3, 34, 12, 15);
+Println(a);
+for var i:=1 to 2 do
+  a[i]:=a[i+1]; 
+Println(a);
+SetLength(a,3); 
+Println(a);
