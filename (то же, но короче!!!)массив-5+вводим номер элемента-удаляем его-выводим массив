@@ -1,0 +1,10 @@
+##
+var a:= new integer[5](1,2,3,4,5);
+Println(a);
+var x:= ReadlnInteger;
+////
+for var i:= x-1 to 3 do
+   a[i]:=a[i+1];
+////
+SetLength(a,4);
+Println(a)
