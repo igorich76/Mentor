@@ -1,0 +1,27 @@
+##
+function Diskr(a, b, c: real) := (Sqr(b) - (4 * (a * c)));
+
+begin
+  Println('Расчёт дискриминанта и квадратного уравнения');
+  Println('Введите 1- дискриминант, 2 - квадратное уравнение');
+  
+  case ReadInteger of
+    1:
+      begin
+        var (a, b, c) := ReadlnReal3('Введите 3 переменные = ');
+        Println('Дискриминант = ', Diskr(a, b, c));//
+      end;    
+    2:
+      begin
+        var (a, b, c) := ReadlnReal3('Введите три переменные = ');
+        var a1 := Diskr(a, b, c);
+        if a1 > 0 then 
+        begin
+          Println('х1 = ', (-b + Sqrt(a1)) / 2 * a);
+          Println('х2 = ', (-b - Sqrt(a1)) / 2 * a);
+        end
+        else if a1 < 0 then Println('Решений нет!')
+          else if a1 = 0 then Println('х = ', (-b / (2 * a)))         
+      end;
+  end; 
+end; 
