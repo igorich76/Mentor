@@ -1,0 +1,24 @@
+procedure norm_ves(rost: real);
+begin
+  var ves := rost / 2.5;
+  Println('Ваш нормальный вес', ves, ' кг');
+end;
+
+procedure norm_talia(rost: real);
+begin
+  var talia := rost / 2.1;
+  Println('Ваша талия должна быть', talia, ' см');
+end;
+
+procedure norm_ruka(rost: real);
+begin
+  var ruka := rost / 10;
+  Println('Длина руки ', ruka, ' см');
+end;
+
+begin
+  var rost := ReadInteger('Введите рост = ');  
+  norm_ves(rost);
+  norm_talia(rost);
+  norm_ruka(rost);
+end.
