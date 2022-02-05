@@ -1,0 +1,19 @@
+procedure kub(a, b, c: integer; var p, s, v: integer);
+begin
+  p := (4 * (a + b + c));
+  s := ((2 * c) * (a + b));
+  v := (a * b * c);
+  Println('Периметр = ', p);
+  Println('Площадь поверхности = ', s);
+  Println('Объём = ', v);
+end;
+
+begin
+  Println('Введите три измерения параллелепипеда: ');
+  Println('Введите длину(а), ширину(b), высоту(c):');
+  var (a,b, c) := ReadInteger3;
+  var p, s, v: integer;
+  kub(a, b, c, p, s, v);
+  var z:=p*s*v;
+  Println('Произведение = ',z);
+end.
