@@ -1,0 +1,14 @@
+##
+Println('Введите три измерения параллелепипеда: ');
+var (a, b, c) := ReadlnInteger3('Введите длину(а), ширину(b), высоту(c):');
+var p := (4 * (a + b + c));
+var s := ((2 * c) * (a + b));
+var v := (a * b * c);
+Println('Периметр = ', p);
+Println('Площадь поверхности = ', s);
+Println('Объём = ', v);
+var proizv := p * s * v;
+var itog: real;
+if proizv > 100 then itog := proizv / 2
+   else itog := proizv * 2;
+Println('Итог = ', itog); 
