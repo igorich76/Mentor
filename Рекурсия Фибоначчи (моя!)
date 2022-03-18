@@ -1,0 +1,11 @@
+function Fib(n: integer): integer;
+begin
+  if n>2 then  result:=Fib(n-2)+Fib(n-1)
+  else result:=1 
+end;
+
+begin
+  Println(Fib(ReadInteger('Введите число Фибоначчи >>')))
+  // ментор посоветовал так, а то скобок много, не очень хорошо
+  //Fib(ReadInteger('Введите число Фибоначчи >>')).println;
+end.
