@@ -1,0 +1,9 @@
+function SOdd(n: integer): integer;
+begin
+  if n > 0 then Result := SOdd(n - 1) + (2 * n - 1)
+  else Result := 0;
+end;
+
+begin
+  Print(SOdd(ReadInteger))
+end.
