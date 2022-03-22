@@ -1,0 +1,9 @@
+##
+var (a, b, h) := ReadReal3;
+var s:= 0.0;
+var x:= a;
+while x <= b do begin
+  s += ((Sqrt(x + 1)) + 2 *x ** 3) / (6.5 * Sqrt(2 * x - 1));  
+  x += h;    
+end;
+Print(Round(s, 5));
