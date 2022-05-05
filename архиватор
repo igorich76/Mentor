@@ -1,0 +1,9 @@
+{$reference 'System.IO.Compression.FileSystem.dll'}
+uses System;
+uses System.IO.Compression;
+
+begin
+  var a := ReadlnString('Введите путь к папке и имя будущего архива(его полный путь + имя.zip)'#13#10);
+  ZipFile.CreateFromDirectory(a, a + '.zip');
+  Println('Готово!');
+end.
