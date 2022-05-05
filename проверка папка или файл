@@ -1,0 +1,9 @@
+{$reference 'System.IO.Compression.FileSystem.dll'}
+uses System;
+uses System.IO.Compression;
+
+begin
+  var a := ReadlnString('Введите путь к папке или файлу'#13#10);
+  if System.IO.Path.HasExtension(a) then Print('Это файл!')
+    else Print('Это папка!');   
+end.
