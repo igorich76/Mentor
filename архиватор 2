@@ -1,0 +1,55 @@
+//улучшенный вариант:
+{$reference 'System.IO.Compression.FileSystem.dll'}
+uses System;
+uses System.IO;
+uses System.IO.Compression;
+
+begin
+  var a := ReadlnString('Введите путь к папке или файлу'#13#10); 
+  if system.io.File.GetAttributes(a) = system.IO.FileAttributes.Directory then
+    system.io.compression.ZipFile.CreateFromDirectory(a, a + '.zip')  
+  else
+  begin
+    var b := Path.GetDirectoryName(a) + '\' + Path.GetFileNameWithoutExtension(a); 
+    Directory.CreateDirectory(b);
+    System.IO.File.Copy(a, b + '\' + Path.GetFileName(a));
+    system.io.compression.ZipFile.CreateFromDirectory(b, b + '.zip');
+  end;
+  'Готово!'.Println;  
+end.
+//c:\test\1.txt
+//c:\test\2
+
+//предыдущий вапиант:
+{$reference 'System.IO.Compression.FileSystem.dll'}
+uses System;
+uses System.IO;
+uses System.IO.Compression;
+
+begin
+  var a := ReadlnString('Введите путь к папке или файлу'#13#10); 
+  if System.IO.Path.HasExtension(a) then 
+  begin
+    'Это файл!'.Println;
+    var b := Path.GetDirectoryName(a) + '\' + Path.GetFileNameWithoutExtension(a); 
+    Directory.CreateDirectory(b);
+    System.IO.File.Copy(a, b + '\' + Path.GetFileName(a));
+    if system.io.File.GetAttributes(b) = system.IO.FileAttributes.Directory then
+      begin
+      system.io.compression.ZipFile.CreateFromDirectory(b, b + '.zip');
+      'Готово!'.Println
+      end;
+  end
+  else 
+    begin
+    'Это папка!!'.Println;
+    if system.io.File.GetAttributes(a) = system.IO.FileAttributes.Directory then
+     begin
+      system.io.compression.ZipFile.CreateFromDirectory(a, a + '.zip');
+      'Готово!'.Println
+     end
+  end;
+end.
+//c:\test\1.txt
+//c:\test\2
+//много лишнего
