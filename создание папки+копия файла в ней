@@ -1,0 +1,12 @@
+//создаём папку. А в ней копия исходного файла
+{$reference 'System.IO.Compression.FileSystem.dll'}
+uses System;
+uses System.IO;
+uses System.IO.Compression;
+
+begin  
+Directory.CreateDirectory(Path.GetDirectoryName('c:\test\1.txt') + '\' + Path.GetFileNameWithoutExtension('c:\test\1.txt'));
+System.IO.File.Copy('c:\test\1.txt', 'c:\test\1\1.txt');
+end.
+//c:\test\1.txt
+//c:\test\1\1.txt
