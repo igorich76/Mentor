@@ -1,0 +1,20 @@
+{$reference 'System.IO.Compression.FileSystem.dll'}
+uses System, System.IO, System.IO.Compression;
+
+begin
+  var a := ReadlnString('Введите путь к папке или файлу'#13#10); 
+  if &File.GetAttributes(a) = &FileAttributes.Directory then
+    ZipFile.CreateFromDirectory(a, a + '.zip')  
+  else
+    if (Path.GetExtension(a) = '.zip') or (Path.GetExtension(a) = '.nupkg') then  
+    ZipFile.ExtractToDirectory(a, Path.GetDirectoryName(a) + '\' + Path.GetFileNameWithoutExtension(a))
+  else
+  begin
+    var b := Path.GetDirectoryName(a) + '\' + Path.GetFileNameWithoutExtension(a); 
+    Directory.CreateDirectory(b);
+    &File.Copy(a, b + '\' + Path.GetFileName(a));
+    ZipFile.CreateFromDirectory(b, b + '.zip');
+  end;
+  'Готово!'.Println;  
+end.
+//я сделал-таки его...
