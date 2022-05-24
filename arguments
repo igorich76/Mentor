@@ -1,0 +1,6 @@
+##
+var n := ParamCount;
+WriteLn('Из командной строки поступило ', n, ' аргументов:');
+for var i := 1 to n do
+  WriteLn(i, '–й аргумент = ', ParamStr(i)); 
+//notepad "c:\test\1.txt"
