@@ -1,12 +1,13 @@
+{$apptype windows}
 {$reference 'System.IO.Compression.FileSystem.dll'}
 uses System, System.IO, System.IO.Compression;
 
 begin
-  var a := ReadlnString('Введите путь к папке или файлу'#13#10); 
+  var a := ParamStr(1); //c:\test\11.txt - в параметры командной строки
   if &File.GetAttributes(a) = &FileAttributes.Directory then
     ZipFile.CreateFromDirectory(a, a + '.zip')  
   else
-    if (Path.GetExtension(a) = '.zip') or (Path.GetExtension(a) = '.nupkg') then  
+  if Path.GetExtension(a) in |'.zip', '.nupkg'| then //так можно оформить условие
     ZipFile.ExtractToDirectory(a, Path.GetDirectoryName(a) + '\' + Path.GetFileNameWithoutExtension(a))
   else
   begin
@@ -14,7 +15,7 @@ begin
     Directory.CreateDirectory(b);
     &File.Copy(a, b + '\' + Path.GetFileName(a));
     ZipFile.CreateFromDirectory(b, b + '.zip');
+    Directory.Delete(b, true);    
   end;
-  'Готово!'.Println;  
 end.
 //я сделал-таки его...
