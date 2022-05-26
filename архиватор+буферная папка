@@ -1,0 +1,20 @@
+{$apptype windows}
+{$reference 'System.IO.Compression.FileSystem.dll'}
+uses System, System.IO, System.IO.Compression;
+
+begin
+  var a := ParamStr(1);
+  if &File.GetAttributes(a) = &FileAttributes.Directory then 
+    ZipFile.CreateFromDirectory(a, a + '.zip')              //если папка, то сразу делаем архив
+  else
+  if Path.GetExtension(a) in |'.zip', '.nupkg'| then               //так можно оформить условие, если файл-архив, то деархивация
+    ZipFile.ExtractToDirectory(a, Path.GetDirectoryName(a) + '\' + Path.GetFileNameWithoutExtension(a))
+  else
+  begin       // работа с обычным файлом
+    var c := 'C:\ProgramData' + '\' + Path.GetFileNameWithoutExtension(a);
+    Directory.CreateDirectory(c);
+    &File.Copy(a, c + '\' + Path.GetFileName(a));
+    ZipFile.CreateFromDirectory(c, Path.ChangeExtension(a,'.zip'));
+    Directory.Delete(c, true); 
+  end;   
+end.
